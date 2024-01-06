@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class SentenceAnalyzer {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the sentence
+        System.out.println("Enter a sentence (ending with a period):");
+        String sentence = scanner.nextLine();
+
+        // Analyze the sentence
+        int length = getLength(sentence);
+        int wordCount = getWordCount(sentence);
+        int vowelCount = getVowelCount(sentence);
+
+        // Display the results
+        System.out.println("Length of the sentence: " + length);
+        System.out.println("Number of words: " + wordCount);
+        System.out.println("Number of vowels: " + vowelCount);
+
+        scanner.close();
+    }
+
+    private static int getLength(String sentence) {
+        return sentence.length();
+    }
+
+    private static int getWordCount(String sentence) {
+        String[] words = sentence.split("\\s+");
+        return words.length;
+    }
+
+    private static int getVowelCount(String sentence) {
+        int count = 0;
+        String vowels = "aeiouAEIOU";
+
+        for (char c : sentence.toCharArray()) {
+            if (vowels.indexOf(c) != -1) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
